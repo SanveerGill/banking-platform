@@ -1,7 +1,7 @@
 package com.sanveer.banking_platform_backend.controllers;
 
-import com.sanveer.banking_platform_backend.dtos.CreateUserRequest;
-import com.sanveer.banking_platform_backend.dtos.CreateUserResponse;
+import com.sanveer.banking_platform_backend.dtos.user.CreateUserRequest;
+import com.sanveer.banking_platform_backend.dtos.user.CreateUserResponse;
 import com.sanveer.banking_platform_backend.entities.User;
 import com.sanveer.banking_platform_backend.services.UserService;
 import jakarta.validation.Valid;

@@ -1,4 +1,4 @@
-package com.sanveer.banking_platform_backend.dtos;
+package com.sanveer.banking_platform_backend.dtos.user;
 
 import java.time.Instant;
 

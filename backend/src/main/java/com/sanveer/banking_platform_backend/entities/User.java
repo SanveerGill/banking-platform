@@ -3,6 +3,7 @@ package com.sanveer.banking_platform_backend.entities;
 import jakarta.persistence.*;
 
 import java.time.Instant;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -22,6 +23,9 @@ public class User {
 
     private Instant createdTimestamp;
    // private String updatedTimestamp;
+
+    @OneToMany(mappedBy="user")
+    private List<Account> accounts;
 
    // private String status; ACTIVE, SUSPENDED, CLOSED
 
