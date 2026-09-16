@@ -3,22 +3,21 @@ package com.sanveer.banking_platform_backend.dtos.account;
 import com.sanveer.banking_platform_backend.entities.User;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 
 public class CreateAccountRequest {
 
-    private User user;
-    private String accountType;
-    private BigDecimal balance;
+    private final Long userId;
+    private final String accountType;
+    private final BigDecimal balance;
 
-    public CreateAccountRequest(User user, String accountType, BigDecimal balance) {
-        this.user = user;
+    public CreateAccountRequest(Long userId, String accountType, BigDecimal balance) {
+        this.userId = userId;
         this.accountType = accountType;
         this.balance = balance;
     }
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
     public String getAccountType() {

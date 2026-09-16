@@ -7,22 +7,22 @@ import java.time.Instant;
 
 public class CreateAccountResponse {
 
-    private User user;
-    private String accountNumber;
-    private String accountType;
-    private BigDecimal balance;
-    private Instant createdTimestamp;
+    private final Long userId;
+    private final String accountNumber;
+    private final String accountType;
+    private final BigDecimal balance;
+    private final Instant createdTimestamp;
 
-    public CreateAccountResponse(User user, String accountNumber, String accountType, BigDecimal balance, Instant createdTimestamp) {
-        this.user = user;
+    public CreateAccountResponse(Long userId, String accountNumber, String accountType, BigDecimal balance, Instant createdTimestamp) {
+        this.userId = userId;
         this.accountNumber = accountNumber;
         this.accountType = accountType;
         this.balance = balance;
         this.createdTimestamp = createdTimestamp;
     }
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
     public String getAccountNumber() {
