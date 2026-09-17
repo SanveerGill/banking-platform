@@ -1,7 +1,5 @@
 package com.sanveer.banking_platform_backend.dtos.account;
 
-import com.sanveer.banking_platform_backend.entities.User;
-
 import java.math.BigDecimal;
 
 public class CreateAccountRequest {
