@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 public class AccountService {
@@ -32,8 +33,10 @@ public class AccountService {
     public AccountResponse createAccount(CreateAccountRequest request)
     {
         Long userId = request.getUserId();
+        String accountNumber = generateAccountNumber();
         User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
         Account newAccount = this.accountMapper.toEntity(request);
+        newAccount.setAccountNumber(accountNumber);
         newAccount.setUser(user);
         Account savedAccount = this.accountRepository.save(newAccount);
         return this.accountMapper.toResponse(savedAccount);
@@ -54,5 +57,24 @@ public class AccountService {
     public List<AccountResponse> getAccountsForUser(Long userId) {
         List<Account> accounts = accountRepository.findByUserId(userId).orElseThrow(() -> new AccountNotFoundException(userId));
         return accounts.stream().map(accountMapper::toResponse).toList();
+    }
+
+    private String generateAccountNumber() {
+
+        String accountNumber;
+
+        do {
+            accountNumber = String.valueOf(
+                    ThreadLocalRandom.current()
+                            .nextLong(100_000_000_000L, 1_000_000_000_000L)
+            );
+        } while (accountRepository.existsByAccountNumber(accountNumber));
+
+        return accountNumber;
+    }
+
+    public void deleteAccount(Long id) {
+        Account account = accountRepository.findById(id).orElseThrow(() -> new AccountNotFoundException(id));
+        accountRepository.delete(account);
     }
 }

@@ -44,4 +44,12 @@ public class AccountController {
         return ResponseEntity.status(HttpStatus.CREATED).body(accountService.createAccount(request));
     }
 
+    //Temporary, should be removed later and replaced with a "Close account" that uses user authentication
+    @DeleteMapping("/delete/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteAccount(@PathVariable Long id)
+    {
+        accountService.deleteAccount(id);
+    }
+
 }

@@ -13,7 +13,9 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, unique = true)
     private String accountNumber;
+
     private String accountType;
     private BigDecimal balance;
     private Instant createdTimestamp;
