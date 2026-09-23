@@ -15,5 +15,6 @@ public interface AccountMapper {
     @Mapping(target = "accountNumber", ignore = true)
     Account toEntity(CreateAccountRequest request);
 
+    @Mapping(source = "user.id", target = "userId")
     AccountResponse toResponse(Account account);
 }

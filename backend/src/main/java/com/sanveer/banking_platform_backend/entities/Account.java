@@ -36,6 +36,11 @@ public class Account {
         this.user = user;
     }
 
+    @PrePersist
+    protected void onCreate() {
+        createdTimestamp = Instant.now();
+    }
+
     public Long getId() {
         return id;
     }
