@@ -1,8 +1,8 @@
-package com.sanveer.banking_platform_backend.dtos;
+package com.sanveer.banking_platform_backend.dtos.user;
 
 import java.time.Instant;
 
-public class CreateUserResponse {
+public class UserResponse {
 
     private final Long id;
 
@@ -12,7 +12,7 @@ public class CreateUserResponse {
     private final String phoneNumber;
     private final Instant createdTimestamp;
 
-    public CreateUserResponse(Long id, String firstName, String lastName, String email, String phoneNumber, Instant createdTimestamp) {
+    public UserResponse(Long id, String firstName, String lastName, String email, String phoneNumber, Instant createdTimestamp) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

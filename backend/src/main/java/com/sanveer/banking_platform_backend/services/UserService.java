@@ -1,7 +1,7 @@
 package com.sanveer.banking_platform_backend.services;
 
-import com.sanveer.banking_platform_backend.dtos.CreateUserRequest;
-import com.sanveer.banking_platform_backend.dtos.CreateUserResponse;
+import com.sanveer.banking_platform_backend.dtos.user.CreateUserRequest;
+import com.sanveer.banking_platform_backend.dtos.user.UserResponse;
 import com.sanveer.banking_platform_backend.entities.User;
 import com.sanveer.banking_platform_backend.exceptions.UserNotFoundException;
 import com.sanveer.banking_platform_backend.repositories.UserRepository;
@@ -23,20 +23,22 @@ public class UserService {
     }
 
     @Transactional
-    public CreateUserResponse createUser(CreateUserRequest requestDTO)
+    public UserResponse createUser(CreateUserRequest requestDTO)
     {
         User user = userMapper.toEntity(requestDTO);
         User savedUser = userRepository.save(user);
         return userMapper.toResponse(savedUser);
     }
 
-    public User getUser(Long id)
+    public UserResponse getUser(Long id)
     {
-        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
+        User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
+        return userMapper.toResponse(user);
     }
 
-    public List<User> getAllUsers()
+    public List<UserResponse> getAllUsers()
     {
-        return userRepository.findAll();
+        List<User> users = userRepository.findAll();
+        return users.stream().map(userMapper::toResponse).toList();
     }
 }
