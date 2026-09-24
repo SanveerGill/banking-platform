@@ -3,6 +3,7 @@ package com.sanveer.banking_platform_backend.entities;
 import jakarta.persistence.*;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,7 +26,7 @@ public class User {
    // private String updatedTimestamp;
 
     @OneToMany(mappedBy="user")
-    private List<Account> accounts;
+    private List<Account> accounts = new ArrayList<>();
 
    // private String status; ACTIVE, SUSPENDED, CLOSED
 
@@ -44,10 +45,6 @@ public class User {
     @PrePersist
     protected void onCreate() {
         createdTimestamp = Instant.now();
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Long getId() {
@@ -92,6 +89,14 @@ public class User {
 
     public void setCreatedTimestamp(Instant createdTimestamp) {
         this.createdTimestamp = createdTimestamp;
+    }
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
     }
 
     @Override
