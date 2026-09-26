@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "accounts")
@@ -23,6 +25,12 @@ public class Account {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToMany(mappedBy = "fromAccount")
+    private List<Transaction> outgoingTransactions = new ArrayList<>();
+
+    @OneToMany(mappedBy = "toAccount")
+    private List<Transaction> incomingTransactions = new ArrayList<>();
 
     public Account() {
     }
@@ -83,6 +91,14 @@ public class Account {
 
     public void setCreatedTimestamp(Instant createdTimestamp) {
         this.createdTimestamp = createdTimestamp;
+    }
+
+    public List<Transaction> getOutgoingTransactions() {
+        return outgoingTransactions;
+    }
+
+    public List<Transaction> getIncomingTransactions() {
+        return incomingTransactions;
     }
 
     @Override
