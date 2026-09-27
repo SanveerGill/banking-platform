@@ -1,5 +1,7 @@
 package com.sanveer.banking_platform_backend.entities;
 
+import com.sanveer.banking_platform_backend.enums.TransactionStatus;
+import com.sanveer.banking_platform_backend.enums.TransactionType;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -98,16 +100,5 @@ public class Transaction {
     {
         createdTimestamp = Instant.now();
     }
-
-    public enum TransactionType {
-        TRANSFER,
-        DEPOSIT,
-        WITHDRAWAL
-    }
-
-    public enum TransactionStatus {
-        PENDING,
-        COMPLETED,
-        FAILED
-    }
 }
+
