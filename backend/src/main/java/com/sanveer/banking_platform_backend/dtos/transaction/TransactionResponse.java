@@ -21,4 +21,32 @@ public class TransactionResponse {
     private TransactionStatus status;
 
     private Instant createdTimestamp;
+
+    public Long getTransactionId() {
+        return transactionId;
+    }
+
+    public Long getFromAccountId() {
+        return fromAccountId;
+    }
+
+    public Long getToAccountId() {
+        return toAccountId;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public TransactionType getType() {
+        return type;
+    }
+
+    public TransactionStatus getStatus() {
+        return status;
+    }
+
+    public Instant getCreatedTimestamp() {
+        return createdTimestamp;
+    }
 }

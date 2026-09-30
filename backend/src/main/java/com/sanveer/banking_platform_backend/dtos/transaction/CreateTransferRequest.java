@@ -16,4 +16,16 @@ public class CreateTransferRequest {
     @NotNull
     @DecimalMin("0.01")
     private BigDecimal amount;
+
+    public Long getFromAccountId() {
+        return fromAccountId;
+    }
+
+    public Long getToAccountId() {
+        return toAccountId;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
 }
