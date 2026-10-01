@@ -16,11 +16,28 @@ public class TransactionResponse {
 
     private BigDecimal amount;
 
-    private TransactionType type;
+    private TransactionType transactionType;
 
-    private TransactionStatus status;
+    private TransactionStatus transactionStatus;
 
     private Instant createdTimestamp;
+
+    public TransactionResponse(
+            Long transactionId,
+            Long fromAccountId,
+            Long toAccountId,
+            BigDecimal amount,
+            TransactionType transactionType,
+            TransactionStatus transactionStatus,
+            Instant createdTimestamp) {
+        this.transactionId = transactionId;
+        this.fromAccountId = fromAccountId;
+        this.toAccountId = toAccountId;
+        this.amount = amount;
+        this.transactionType = transactionType;
+        this.transactionStatus = transactionStatus;
+        this.createdTimestamp = createdTimestamp;
+    }
 
     public Long getTransactionId() {
         return transactionId;
@@ -38,12 +55,12 @@ public class TransactionResponse {
         return amount;
     }
 
-    public TransactionType getType() {
-        return type;
+    public TransactionType getTransactionType() {
+        return transactionType;
     }
 
-    public TransactionStatus getStatus() {
-        return status;
+    public TransactionStatus getTransactionStatus() {
+        return transactionStatus;
     }
 
     public Instant getCreatedTimestamp() {

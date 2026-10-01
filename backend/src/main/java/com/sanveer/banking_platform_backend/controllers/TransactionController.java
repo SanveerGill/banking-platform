@@ -22,17 +22,17 @@ public class TransactionController {
     }
 
     @PostMapping("/transfer")
-    public ResponseEntity<TransactionResponse> transferMoney(@Valid CreateTransferRequest request) {
+    public ResponseEntity<TransactionResponse> transferMoney(@Valid @RequestBody CreateTransferRequest request) {
         return ResponseEntity.ok(transactionService.transferMoney(request));
     }
 
     @PostMapping("/deposit")
-    public ResponseEntity<TransactionResponse> depositMoney(@Valid CreateDepositRequest request) {
+    public ResponseEntity<TransactionResponse> depositMoney(@Valid @RequestBody CreateDepositRequest request) {
         return ResponseEntity.ok(transactionService.depositMoney(request));
     }
 
     @PostMapping("/withdrawal")
-    public ResponseEntity<TransactionResponse> withdrawMoney(@Valid CreateWithdrawalRequest request) {
+    public ResponseEntity<TransactionResponse> withdrawMoney(@Valid @RequestBody CreateWithdrawalRequest request) {
         return ResponseEntity.ok(transactionService.withdrawMoney(request));
     }
 
