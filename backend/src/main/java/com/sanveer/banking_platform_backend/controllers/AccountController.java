@@ -2,6 +2,7 @@ package com.sanveer.banking_platform_backend.controllers;
 
 import com.sanveer.banking_platform_backend.dtos.account.CreateAccountRequest;
 import com.sanveer.banking_platform_backend.dtos.account.AccountResponse;
+import com.sanveer.banking_platform_backend.dtos.transaction.TransactionResponse;
 import com.sanveer.banking_platform_backend.services.AccountService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -42,6 +43,12 @@ public class AccountController {
     public ResponseEntity<AccountResponse> createAccount(@Valid @RequestBody CreateAccountRequest request)
     {
         return ResponseEntity.status(HttpStatus.CREATED).body(accountService.createAccount(request));
+    }
+
+    @GetMapping("/{accountId}/transactions")
+    public ResponseEntity<List<TransactionResponse>> getAccountTransactions(@PathVariable Long accountId)
+    {
+        return ResponseEntity.ok(accountService.getAllTransactions(accountId));
     }
 
     //Temporary, should be removed later and replaced with a "Close account" that uses user authentication
